@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:Converters="clr-namespace:PM2_EXAMEN3.Utils"
+             x:Class="PM2_EXAMEN3.Views.ListaPagos">
+    <StackLayout>
+        <ListView x:Name="listViewPagos"
+                  ItemsSource="{Binding ListaPago}"
+                  SelectionMode="None"
+                  Margin="5"
+                  HeightRequest="150">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Margin="20,0,0,0"
+                                     Orientation="Horizontal"
+                                     HorizontalOptions="FillAndExpand"
+                                     x:Name="Item">
+                            <Label Text="{Binding Descripcion}"
+                                   VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding Fecha}"
+                                   VerticalTextAlignment="Center"/>
+
+                            <Label HorizontalOptions="Center" 
+                                Margin="20,10">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Lps. " 
+                                              FontAttributes="Bold"
+                                              FontSize="15" 
+							                  FontFamily="SansRegular"/>
+
+                                        <Span Text="{Binding Monto}" FontAttributes="Bold" FontSize="15"/>
+
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Button Margin="12,0"
+                                    ImageSource="delete.png"
+                                    HorizontalOptions="End"
+                                    BackgroundColor="WhiteSmoke"
+                                    BindingContext="{Binding Source={x:Reference listViewPagos}, Path=BindingContext}" 
+                                    Command="{Binding DeleteServiceCommand}" 
+                                    CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

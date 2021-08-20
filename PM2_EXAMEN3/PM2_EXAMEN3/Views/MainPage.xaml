@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PM2_EXAMEN3.Views.MainPage"
+             BackgroundColor="White"
+             Title="Ingreso de Pagos">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Guardar"
+                 Command="{Binding SaveInformation}"
+                 IconImageSource="example_icon.png"
+                 Order="Secondary"
+                 Priority="1" />
+        <ToolbarItem Text="Modificar"
+                 IconImageSource="example_icon.png"
+                 Order="Secondary"
+                 Priority="2" />
+        <ToolbarItem Text="Eliminar"
+                 IconImageSource="example_icon.png"
+                 Order="Secondary"
+                 Priority="2" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Orientation="Vertical">
+        <ScrollView BackgroundColor="White">
+            <StackLayout>
+                <Label Text="Ingrese la descripción del pago:"
+                       BackgroundColor="#FDFDFD"
+                       Margin="20,10,20,0" 
+                       TextColor="Black"
+                       FontSize="20" 
+                       FontFamily="NewYork"/>
+
+                <Editor BackgroundColor="#FDFDFD"
+                        Margin="20,10,20,0" 
+                        TextColor="Black"
+                        Text="{Binding Descripcion}"
+                        HeightRequest="70"
+                        FontSize="20" 
+                        FontFamily="NewYork"/>
+
+                <Label Text="Ingrese el monto recibido:"
+                       BackgroundColor="#FDFDFD"
+                       Margin="20,10,20,0" 
+                       TextColor="Black"
+                       FontSize="20" 
+                       FontFamily="NewYork"/>
+
+                <Entry BackgroundColor="#FDFDFD"
+                       Keyboard="Numeric"
+                       Margin="20,10,20,0" 
+                       TextColor="Black"
+                       Text="{Binding Monto}"
+                       FontSize="20" 
+                       FontFamily="NewYork"/>
+
+                <Label Text="Seleccione la fecha:"
+                       BackgroundColor="#FDFDFD"
+                       Margin="20,10,20,0" 
+                       TextColor="Black"
+                       FontSize="20" 
+                       FontFamily="NewYork"/>
+
+                <Entry BackgroundColor="#FDFDFD"
+                            Margin="20,10,20,0" 
+                            TextColor="Black"
+                            FontSize="20" 
+                            FontFamily="NewYork"
+                       Text="{Binding Fecha}"/>
+                <Frame BorderColor="Black" CornerRadius="20" WidthRequest="150" HeightRequest="150" Margin="10,3" Padding="5">
+                    <Image x:Name="foto" Source="{Binding UrlPhoto}" WidthRequest="150" />
+                </Frame>
+                <StackLayout Padding="0,0" Margin="5">
+                    <Grid>
+                        <Button Grid.Row="0" Grid.Column="0"
+                                Text="Tomar Foto"
+                                Command="{Binding SelectMedia}"
+                                CornerRadius="10"
+                                HorizontalOptions="CenterAndExpand"
+                                TextColor="White"
+                                BackgroundColor="#2196F3"
+                                FontSize="18" 
+                                FontFamily="AppleNegrita" HeightRequest="70" WidthRequest="200"/>
+
+                        <Button Grid.Row="0" Grid.Column="1"
+                                IsVisible="false" 
+                                Text="Guardar"
+                                CornerRadius="10"
+                                HorizontalOptions="CenterAndExpand"
+                                TextColor="White"
+                                BackgroundColor="#2196F3"
+                                FontSize="18" 
+                                FontFamily="AppleNegrita" HeightRequest="70" WidthRequest="200"/>
+
+                        <Button Grid.Row="0" Grid.Column="2"
+                                Text="Ver Lista De Pagos" 
+                                HorizontalOptions="Center" 
+                                CornerRadius="10"
+                                MinimumHeightRequest="-1"
+                                TextColor="White"
+                                BackgroundColor="#2196F3"
+                                FontSize="18" 
+                                FontFamily="AppleNegrita" HeightRequest="70" WidthRequest="200"
+                                Command="{Binding listViewPagos}"/>
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>        
+    </StackLayout>
+</ContentPage>
